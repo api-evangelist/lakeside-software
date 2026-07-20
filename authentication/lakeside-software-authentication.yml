@@ -1,0 +1,120 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://documentation.lakesidesoftware.com/docs/systrack-api-1,
+  https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide,
+  https://documentation.lakesidesoftware.com/docs/cloud-authentication-microsoft-entra-id,
+  https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle,
+  https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack
+description: >-
+  SysTrack separates human sign-in from programmatic access. Interactive users authenticate to the
+  SysTrack Cloud through Azure AD B2C / Microsoft Entra ID or via SAML SSO. Programmatic callers use
+  scoped SysTrack API keys, issued per capability (Read, Read/Write, Ingest, SysTrack AI Partner).
+  The SysTrack AI MCP Server additionally supports OAuth 2.0 with Microsoft Entra ID as of the
+  11.7.1.29 hotfix. No public OpenAPI is published, so this profile is harvested from documentation
+  rather than derived from securitySchemes.
+derived_from_openapi: false
+derived_from_openapi_note: >-
+  Lakeside publishes no public OpenAPI/Swagger document — the API reference at
+  documentation.lakesidesoftware.com/apidocs sits behind customer sign-in (302 to
+  identity.document360.io). derive-authentication.py had no spec to read.
+schemes:
+- id: systrack-api-key
+  type: apiKey
+  name: SysTrack API key
+  applies_to: [SysTrack API, Data API (legacy)]
+  environments: [cloud]
+  description: >-
+    The documented authentication method for the SysTrack API on cloud tenants. Keys are generated
+    in the SysTrack tenant and presented on each request. Key variants named in the documentation
+    are "SysTrack Read" and "SysTrack Read/Write".
+  variants:
+  - name: SysTrack Read
+    access: read-only
+  - name: SysTrack Read/Write
+    access: read-write
+  docs: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+  location: null
+  location_note: >-
+    The header/parameter name carrying the key is documented only inside the customer-gated API
+    reference; not recorded here rather than guessed.
+- id: ingest-api-key
+  type: apiKey
+  name: Ingest API key
+  applies_to: [SysTrack Ingest API]
+  environments: [cloud]
+  description: A valid Ingest API key is required for authentication to the Data Ingest endpoints.
+  docs: https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide
+- id: systrack-ai-partner-key
+  type: apiKey
+  name: SysTrack AI (Partner) key
+  applies_to: [SysTrack AI programmatic access, SysTrack DEX Analytics MCP Server]
+  environments: [cloud]
+  description: >-
+    Required, alongside the SysTrack AI add-on package, to use SysTrack AI programmatic access and
+    the DEX Analytics MCP Server.
+  docs: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+- id: entra-oauth2-mcp
+  type: oauth2
+  name: OAuth 2.0 with Microsoft Entra ID
+  applies_to: [SysTrack AI MCP Server]
+  since: 11.7.1.29 (May 2026)
+  description: >-
+    OAuth 2.0 authentication with Microsoft Entra ID was added for the SysTrack AI MCP Server.
+  scopes_published: false
+  scopes_note: >-
+    No public scope reference is published, so no scopes/ artifact was produced rather than
+    inventing one.
+  docs: https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack
+- id: service-account
+  type: http
+  name: Service account credentials
+  applies_to: [SysTrack API (on-premises / legacy method)]
+  environments: [on-premises]
+  description: >-
+    The "Programmatic Access to SysTrack" course lists service account credentials as the access
+    needed when using the legacy method, and covers authentication on on-premises installations
+    separately from cloud tenants.
+  docs: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+- id: webhook-signed-secret
+  type: hmac
+  name: Signed Secret (outbound webhook verification)
+  direction: outbound
+  description: >-
+    Not a caller-authentication scheme — this is how a receiver verifies that a webhook came from
+    SysTrack. HMAC-SHA256 over the raw request body, Base64-encoded, delivered in the
+    x-lakeside-hmac-sha256 header.
+  detail: asyncapi/lakeside-software-webhooks.yml
+  docs: https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks
+user_authentication:
+  description: Interactive sign-in to the SysTrack Cloud console (not API authentication).
+  methods:
+  - name: Azure AD B2C / Microsoft Entra ID
+    application_name: SysTrack Cloud Edition
+    application_id: 3bc280a0-0206-4276-acf1-b7ee6a7f5b66
+    permission_requested: User.Read
+    data_read: First name, last name, and email address only
+    admin_consent_required: true
+    docs: https://documentation.lakesidesoftware.com/docs/cloud-authentication-microsoft-entra-id
+  - name: SAML SSO
+    docs: https://documentation.lakesidesoftware.com/docs/configure-sso-saml
+authorization:
+  user_to_system:
+    description: >-
+      User-to-System Authorization for SysTrack AI end-user channels was introduced in the 11.7.1.22
+      hotfix, constraining which systems a given end user may act against through AI channels.
+    since: 11.7.1.22 (May 2026)
+    source: https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack
+fair_use:
+  documented: true
+  detail_public: false
+  note: >-
+    The SysTrack API course outline includes a "Fair Use Policy" section, indicating usage limits
+    exist, but the policy text is inside the customer-gated course. No public rate-limit numbers
+    were found.
+  source: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+audit:
+  description: >-
+    SysTrack exposes an Audit API for reading the audit trail, and logs SysTrack AI automation
+    execution activity for auditing.
+  source: https://documentation.lakesidesoftware.com/docs/systrack-api-1
