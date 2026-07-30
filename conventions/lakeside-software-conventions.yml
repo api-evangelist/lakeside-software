@@ -1,0 +1,101 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://documentation.lakesidesoftware.com/docs/systrack-api-1,
+  https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide,
+  https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks,
+  https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle
+description: >-
+  Cross-cutting runtime semantics for the SysTrack API surface, harvested from Lakeside's public
+  documentation. Coverage is partial by necessity: the full API reference sits behind customer
+  sign-in, so conventions that are only described there (header names, pagination parameters, the
+  error envelope) are recorded as unknown rather than guessed.
+base_url: https://cloud.lakesidesoftware.com/api/
+api_style: REST over HTTPS, JSON request and response bodies
+deployment_models: [cloud (SaaS tenant), on-premises]
+authentication:
+  scheme: SysTrack API key (Read, Read/Write, Ingest, SysTrack AI Partner variants)
+  user_signin: Azure AD B2C / Microsoft Entra ID, or SAML SSO
+  mcp: OAuth 2.0 with Microsoft Entra ID
+  detail: authentication/lakeside-software-authentication.yml
+idempotency:
+  supported: false
+  mechanism: null
+  note: >-
+    No idempotency-key header or replay-safety mechanism is documented on any public SysTrack page.
+    The Ingest API instead achieves safety through an explicit staged workflow (upload, diff review,
+    then a separate process call) rather than through client-supplied idempotency keys. Recorded as
+    unsupported rather than asserted — no Idempotency pointer is wired in apis.yml.
+staged_write_workflow:
+  applies_to: Ingest API
+  description: >-
+    The Ingest API deliberately splits a write into discrete, reviewable steps so that schema or data
+    drift is surfaced before anything is committed.
+  steps:
+  - Define the target schema for users or devices (JSON) and send it to SysTrack.
+  - Send a CSV file matching the defined schema.
+  - SysTrack analyzes the upload and reports differences between the CSV and the current schema.
+  - Review the differences and decide how to proceed.
+  - Explicitly call the process endpoint to start ingestion.
+  - SysTrack ingests the data and exposes it via RPT_EnrichedDevices and RPT_EnrichedUsers.
+  - Ingested devices are associated with their WGUID, optimized to run during off-hours.
+  docs: https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide
+pagination:
+  style: unknown
+  note: Pagination parameters are documented only in the customer-gated API reference.
+field_expansion:
+  supported: unknown
+metadata:
+  supported: true
+  mechanism: >-
+    Ingest API — up to 2,000 bytes of metadata per CSV row, typed via the schema
+    (int, double, datetime, guid, boolean, string).
+request_id_tracing:
+  header: null
+  observed:
+  - name: LSHttpAuditSession
+    kind: cookie
+    note: >-
+      Observed on responses from https://cloud.lakesidesoftware.com/api/ — a session/audit
+      correlation cookie set by the API gateway. Not a documented client-facing trace header.
+  - name: request-context
+    kind: response header
+    note: Azure Application Insights correlation header observed on the API gateway response.
+versioning:
+  scheme: product/agent version (e.g. 11.8); no per-request API version header is documented
+  detail: lifecycle/lakeside-software-lifecycle.yml
+error_envelope:
+  format: unknown
+  rfc9457: false
+  note: >-
+    No public error reference or problem-type registry was found; the error catalog lives behind
+    customer sign-in. No errors/ artifact was produced rather than inventing problem types.
+rate_limiting:
+  headers: unknown
+  policy: >-
+    A "Fair Use Policy" section exists in the SysTrack API course, so limits are asserted, but no
+    public numbers or response headers are published.
+  detail: authentication/lakeside-software-authentication.yml
+webhooks:
+  supported: true
+  signing: HMAC-SHA256, Base64, x-lakeside-hmac-sha256 header
+  detail: asyncapi/lakeside-software-webhooks.yml
+tooling:
+  documented_clients: [browser, Postman, cURL, PowerShell]
+  note: >-
+    The SysTrack API course walks through calling the API from a browser, from Postman (including
+    "Visualizer endpoints"), and from PowerShell for both cloud and on-premises. These are usage
+    patterns, not first-party SDKs — no published client libraries were found.
+  detail: packages/lakeside-software-packages.yml
+data_constraints:
+  ingest:
+  - Only CSV files are supported.
+  - Up to 2,000 bytes of metadata per row.
+  - A CSV file can contain rows for up to 125% of the current device or user count.
+  - The schema must be in JSON format.
+  - Column names may contain only letters, digits and underscores.
+  - Column names must not match SQL reserved words.
+  - Supported data types are int, double, datetime, guid, boolean and string.
+  - String columns must have a length value greater than 0.
+  - Device key column type must be SystemName or Serial.
+  - Users are mapped by email as the unique identifier.

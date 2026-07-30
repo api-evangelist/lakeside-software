@@ -1,0 +1,80 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack,
+  https://documentation.lakesidesoftware.com/docs/systrack-release-notes,
+  https://documentation.lakesidesoftware.com/docs/11-8-agent-release-notes
+description: >-
+  Lakeside maintains a dated "What's New in SysTrack?" page that indexes release notes by month,
+  plus per-component release-note streams: platform releases, agent release notes, hotfix release
+  notes, DEX Pack / DEX and Action release notes, Factory Sensor Kits, and SysTrack Pulse. Entries
+  are grouped by calendar month and link to versioned notes.
+scheme: monthly index over versioned per-component release notes
+current_version: '11.8'
+current_version_released: '2026-06-26'
+urls:
+  whats_new: https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack
+  platform_release_notes: https://documentation.lakesidesoftware.com/docs/systrack-release-notes
+  agent_release_notes: https://documentation.lakesidesoftware.com/docs/systrack-agent-release-notes
+  pulse_release_notes: https://documentation.lakesidesoftware.com/docs/pulse-release-notes-2026
+streams:
+- name: Platform release notes
+  cadence: per minor release and hotfix
+- name: Agent release notes
+  cadence: per agent version
+- name: DEX and Action release notes
+  cadence: monthly
+- name: Factory Sensor Kits
+  cadence: monthly
+- name: SysTrack Pulse
+  cadence: per release
+entries:
+- version: '11.8 (agent)'
+  date: '2026-06'
+  url: https://documentation.lakesidesoftware.com/docs/11-8-agent-release-notes
+  breaking: false
+  highlights:
+  - >-
+    Reliability Engineering — a proactive persona-based workflow to investigate, act and track
+    issues, reachable from the Landing Page or Navigation Menu after an administrator enables access.
+  - >-
+    Experience Index (previously Health Score v2) — a sensor-driven measure of user experience;
+    requires agent 11.8 and rolls out gradually to customers with 50%+ of endpoints upgraded.
+  - >-
+    SysTrack AI can now initiate approved Self-Help automations directly from end-user channels
+    including Microsoft Teams, Voice, MCP, A2A and API; only automations approved in the Self-Help
+    catalog are eligible and execution is logged for auditing.
+  - SecureBoot status collection for Windows, macOS and Linux, stored in SASCFG.
+  changes:
+  - Generic GPU utilization collection extended to overall and per-application compute utilization on Windows, and overall GPU memory utilization on macOS, for both integrated and dedicated GPUs.
+  - Battery cycle count now collected on Android devices; Windows battery inventory now sourced from the Windows Battery Report, adding cycle count, capacity and chemistry.
+  notes:
+  - >-
+    Previously announced agent default changes for 11.8 were withdrawn — collection defaults for user
+    information and web collection remain unchanged, and no action is required.
+  - Support for version 10.12 agents ended April 12, 2026; support for 11.0 agents ends July 26, 2026.
+- version: '11.7.1.29 (hotfix)'
+  date: '2026-05'
+  url: https://documentation.lakesidesoftware.com/docs/11-7-0-xxx-hotfix-release-notes
+  breaking: false
+  highlights:
+  - OAuth 2.0 authentication with Microsoft Entra ID for the SysTrack AI MCP Server.
+- version: '11.7.1.22 (hotfix)'
+  date: '2026-05'
+  url: https://documentation.lakesidesoftware.com/docs/11-7-0-xxx-hotfix-release-notes
+  breaking: false
+  highlights:
+  - User-to-System Authorization for SysTrack AI end-user channels.
+- version: '11.7 (on-premises)'
+  date: '2026-04'
+  url: https://documentation.lakesidesoftware.com/docs/117-release-notes-on-premises
+  breaking: false
+- version: '11.7'
+  date: '2026-02'
+  url: https://documentation.lakesidesoftware.com/docs/117-release-notes
+  breaking: false
+- version: SysTrack Pulse 1.1.1
+  date: '2026-07'
+  url: https://documentation.lakesidesoftware.com/docs/pulse-release-notes-2026
+  breaking: false
+window: 2026-02 through 2026-07 (recent entries only; the What's New index carries the full history)

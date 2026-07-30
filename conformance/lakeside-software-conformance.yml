@@ -1,0 +1,107 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://trust.lakesidesoftware.com/,
+  https://documentation.lakesidesoftware.com/docs/cloud-authentication-microsoft-entra-id,
+  https://documentation.lakesidesoftware.com/docs/configure-sso-saml,
+  https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks,
+  https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack,
+  https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle
+description: >-
+  Which industry and cross-cutting standards the Lakeside Software / SysTrack platform conforms to,
+  based on published evidence. Entries marked conforms:false are recorded as honest negatives —
+  either the provider does not implement the standard or publishes no evidence that it does.
+standards:
+- id: iso-27001
+  name: ISO/IEC 27001:2022
+  conforms: true
+  evidence: Certification listed on the public trust center at trust.lakesidesoftware.com.
+- id: soc2
+  name: SOC 2 Type 2
+  conforms: true
+  evidence: SOC 2 Type 2 audit report listed on the public trust center.
+- id: eu-us-dpf
+  name: EU-US Data Privacy Framework (incl. Swiss-US and UK Extension)
+  conforms: true
+  evidence: Listed on the public trust center.
+- id: gdpr
+  name: GDPR (processor obligations)
+  conforms: true
+  evidence: >-
+    Data processing agreements offered through the trust center and a published subprocessors page
+    at lakesidesoftware.com/subprocessors.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: true
+  evidence: >-
+    "OAuth 2.0 Authentication with Microsoft Entra ID for the SysTrack AI MCP Server" shipped in the
+    11.7.1.29 hotfix (May 2026).
+- id: oidc
+  name: OpenID Connect
+  conforms: true
+  evidence: >-
+    SysTrack Cloud authenticates users through Azure AD B2C / Microsoft Entra ID (application ID
+    3bc280a0-0206-4276-acf1-b7ee6a7f5b66, User.Read permission).
+- id: saml
+  name: SAML 2.0
+  conforms: true
+  evidence: SysTrack documents SSO configuration via SAML.
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: >-
+    Lakeside ships the SysTrack DEX Analytics MCP Server as part of the SysTrack AI add-on, and
+    reports MCP as a distinct AI interaction channel in the SysTrack AI Overview dashboard.
+- id: a2a
+  name: Agent2Agent (A2A)
+  conforms: true
+  evidence: >-
+    A2A is enumerated as a SysTrack AI interaction channel alongside MCP, Teams, Voice and Pulse in
+    the SysTrack AI Overview documentation.
+- id: hmac-webhook-signing
+  name: HMAC-SHA256 webhook payload signing
+  conforms: true
+  evidence: >-
+    Signed Secret authentication computes HMAC-SHA256 over the raw request body, Base64-encoded, in
+    the x-lakeside-hmac-sha256 header, with published validation guidance and a Python example.
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: >-
+    No application/problem+json usage or problem-type registry is documented publicly; the error
+    reference is behind customer sign-in.
+- id: rfc8594
+  name: RFC 8594 Sunset header
+  conforms: false
+  evidence: >-
+    End-of-life is communicated through a published life-cycle table and release notes rather than
+    Sunset/Deprecation response headers.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returned 404 on www.lakesidesoftware.com and
+    documentation.lakesidesoftware.com, and 403 on cloud.lakesidesoftware.com.
+- id: openapi
+  name: OpenAPI Specification
+  conforms: false
+  evidence: >-
+    No public OpenAPI/Swagger document was found; the API reference at /apidocs redirects to
+    customer sign-in (identity.document360.io).
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: >-
+    A real webhook event surface exists and is documented, but no AsyncAPI document is published.
+- id: scim
+  name: SCIM
+  conforms: false
+  evidence: No SCIM provisioning endpoint or documentation was found.
+- id: odata
+  name: OData
+  conforms: false
+  evidence: No OData conformance is claimed in public documentation.
+- id: json-api
+  name: 'JSON:API'
+  conforms: false
+  evidence: No JSON:API conformance is claimed in public documentation.

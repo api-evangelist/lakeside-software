@@ -1,0 +1,14 @@
+{
+  "repo": "lakeside-software",
+  "feeds": [
+    {
+      "source": "https://documentation.lakesidesoftware.com/docs/contact-lakeside-support",
+      "feed_url": "https://documentation.lakesidesoftware.com/docs/contact-lakeside-support",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-07-25T15:00:33Z"
+}

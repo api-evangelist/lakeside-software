@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: Direct HTTP probes of each Lakeside Software host, 2026-07-19.
+description: >-
+  Lakeside Software publishes no /.well-known/ discovery surface on any of its public hosts. Every
+  probed path returned 404 (marketing and documentation hosts) or 403 (the application and academy
+  hosts, which reject unauthenticated requests outright). Recorded as a verified negative — no
+  documents were saved because none returned 200.
+hosts:
+- host: https://www.lakesidesoftware.com
+  role: marketing site
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://documentation.lakesidesoftware.com
+  role: documentation portal
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/lakeside-software-llms.txt
+    note: >-
+      Not a /.well-known/ document, but the one machine-readable discovery file Lakeside does
+      publish. Saved verbatim under llms/.
+- host: https://cloud.lakesidesoftware.com
+  role: SysTrack Cloud application and API gateway
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+- host: https://academy.lakesidesoftware.com
+  role: Lakeside Academy training
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+hosts_not_resolving:
+- docs.lakesidesoftware.com
+- developer.lakesidesoftware.com
+- api.lakesidesoftware.com
+- support.lakesidesoftware.com
+- status.lakesidesoftware.com
+documents_saved: 0

@@ -1,0 +1,122 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle,
+  https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack,
+  https://documentation.lakesidesoftware.com/docs/11-8-agent-release-notes
+description: >-
+  Lakeside publishes an explicit product life-cycle policy for SysTrack: every standard release with
+  a fixed life cycle carries two years of support from its release date, SaaS products are
+  continuously serviced and stay supported while offered, and end-of-life notices are published as a
+  dated table. This is a genuine deprecation policy with named sunset dates, including for API
+  surfaces.
+versioning:
+  scheme: semantic-ish product version (major.minor, e.g. 11.8) with hotfix builds (11.7.1.29)
+  mechanism: >-
+    Versioning is at the product/agent level rather than a per-request API version header. No
+    Accept-header or URL-path API versioning scheme is documented publicly.
+  current_release: '11.8'
+  current_release_date: '2026-06-26'
+  docs: https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle
+deprecation:
+  policy_url: https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle
+  support_window: >-
+    Two years of support from release date for standard fixed-life-cycle releases, covering feature
+    requests, feature updates, support cases and security updates.
+  saas_policy: >-
+    SaaS products fully hosted by Lakeside remain in support while the product is offered, contingent
+    on the customer remaining licensed/compliant and current with cloud-delivered endpoint software
+    updates.
+  sunset_header: false
+  sunset_header_note: >-
+    No RFC 8594 Sunset/Deprecation response headers are documented. End-of-life is communicated
+    through the published life-cycle table and release notes.
+  end_of_life:
+  - feature: SysTrack Snapshot API (on-premises)
+    support_ending: '2026-03'
+    api_surface: true
+  - feature: SysTrack Snapshot API (cloud)
+    support_ending: '2026-09'
+    api_surface: true
+  - feature: Image Planner
+    support_ending: '2025-07'
+    api_surface: false
+  - feature: Virtual Machine Planner (VMP) (on-premises)
+    support_ending: '2026-03'
+    api_surface: false
+  - feature: Citrix Director Plugin (on-premises)
+    support_ending: '2026-03'
+    api_surface: false
+  - feature: Intel EMA Integration (on-premises)
+    support_ending: '2026-03'
+    api_surface: false
+  - feature: Ask SysTrack (on-premises)
+    support_ending: '2026-03'
+    api_surface: false
+  legacy:
+  - api: Data API
+    status: legacy
+    superseded_by: SysTrack API
+    evidence: >-
+      "The Data API is now considered legacy. You can continue to use the Data API with a SysTrack
+      Read or SysTrack Read/Write API key. However, we strongly encourage you to transition to the
+      SysTrack API. The SysTrack API is fully supported and provides access to the same data, and
+      more, with better performance and ongoing updates."
+    still_functional: true
+agent_versions:
+  source: https://documentation.lakesidesoftware.com/docs/systrack-versions-and-life-cycle
+  entries:
+  - version: '11.0'
+    released: '2024-07-26'
+    end_of_support: '2026-07-26'
+  - version: '11.1'
+    released: '2024-11-01'
+    end_of_support: '2026-11-01'
+  - version: '11.2'
+    released: '2025-01-24'
+    end_of_support: '2027-01-24'
+  - version: '11.3'
+    released: '2025-04-04'
+    end_of_support: '2027-04-04'
+  - version: '11.4'
+    released: '2025-07-25'
+    end_of_support: '2027-07-25'
+  - version: '11.5'
+    released: '2025-10-31'
+    end_of_support: '2027-10-31'
+  - version: '11.6'
+    released: '2025-12-12'
+    end_of_support: '2027-12-12'
+  - version: '11.7'
+    released: '2026-02-13'
+    end_of_support: '2028-02-13'
+  - version: '11.8'
+    released: '2026-06-26'
+    end_of_support: '2028-06-26'
+  retired:
+  - version: '10.12'
+    support_ended: '2026-04-12'
+    evidence: https://documentation.lakesidesoftware.com/docs/11-8-agent-release-notes
+on_premises_versions:
+  entries:
+  - version: '11.0'
+    released: '2024-10-09'
+    end_of_support: '2026-10-09'
+  - version: '11.3'
+    released: '2025-05-21'
+    end_of_support: '2027-05-21'
+sla:
+  url: null
+  public_uptime_target: null
+  notes: >-
+    No public numeric uptime SLA was found; availability commitments appear to be handled through
+    customer SaaS terms rather than a published service-level page.
+status_page:
+  url: null
+  probed:
+  - host: https://status.lakesidesoftware.com/
+    result: DNS does not resolve
+  notes: >-
+    No public status page was found. status.lakesidesoftware.com does not resolve and no status link
+    is published on the website or documentation portal.
+changelog: changelog/lakeside-software-changelog.yml

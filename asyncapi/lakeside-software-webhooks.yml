@@ -1,0 +1,88 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://documentation.lakesidesoftware.com/docs/webhook-support-for-sensor-notifications,
+  https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks,
+  https://documentation.lakesidesoftware.com/docs/sensor-notification-webhook-body-templates
+type: Webhooks
+asyncapi_spec: null
+asyncapi_note: >-
+  Lakeside publishes no AsyncAPI document for the SysTrack event surface. The webhook catalog below
+  is captured from the documentation rather than fabricated into a spec.
+description: >-
+  SysTrack sends outbound HTTP webhooks when a sensor notification threshold is reached, when
+  SysTrack AI raises an anomaly, and on Data Egress export events. Webhooks are configured as
+  notification recipients (Recipient Type "System"), are reusable across notifications, and carry a
+  customizable JSON body template. Webhook names must be unique. On-premises deployments require the
+  master server to have internet connectivity for webhooks to external services (this excludes the
+  global master).
+direction: outbound
+transport: HTTP
+request_methods: [POST, PUT]
+request_method_note: >-
+  The choice between POST and PUT depends on the third-party system receiving the webhook — POST to
+  create a resource, PUT to update one.
+event_sources:
+- name: Sensor notifications
+  description: Fired when an activated sensor notification threshold is reached.
+  docs: https://documentation.lakesidesoftware.com/docs/sensor-notifications-webhook-support-for-sensor-notifications
+- name: Anomalies (SysTrack AI)
+  description: System notifications for anomalies detected by SysTrack AI.
+  docs: https://documentation.lakesidesoftware.com/docs/systrack-ai-anomalies
+- name: Data Egress
+  description: Export/egress events configured through Configure > Export.
+  docs: https://documentation.lakesidesoftware.com/docs/configure-export
+authentication:
+  methods:
+  - name: 'Off'
+    description: The webhook is not authenticated.
+  - name: Basic Auth
+    description: Username and password of the third-party system; both are required.
+  - name: Signed Secret
+    description: >-
+      SysTrack computes an HMAC signature over the raw request body using a shared secret and sends
+      it in a request header. The secret itself is never transmitted. The secret is displayed only
+      once in the UI at configuration time.
+    signature_header: x-lakeside-hmac-sha256
+    algorithm: HMAC-SHA256
+    signature_encoding: Base64
+    signed_content: Raw request body, exactly as received
+    secret_source: Customer-provided value or system-generated via "Generate New"
+    applies_to: [Sensor, Anomaly, Data Egress]
+    docs: https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks
+verification_guidance:
+  source: https://documentation.lakesidesoftware.com/docs/signed-secret-authentication-for-webhooks
+  steps:
+  - Capture the raw request body exactly as received.
+  - Compute an HMAC-SHA256 hash over the raw request body using the shared secret.
+  - Base64-encode the computed hash.
+  - Compare the computed value with the x-lakeside-hmac-sha256 header value.
+  - Parse and process the JSON payload only after validation succeeds.
+  cautions:
+  - >-
+    Validate against the raw request body bytes. Do not parse the JSON and reserialize before
+    computing the HMAC — whitespace, indentation, key order or line-ending changes produce a
+    different signature.
+  - Use a constant-time comparison where the language or framework supports it.
+  - Base64 values are case-sensitive; use a case-sensitive string comparison.
+  code_examples_published: [Python]
+headers:
+  custom_supported: true
+  note: >-
+    Operators can add multiple unique custom headers per webhook. Headers marked "Sensitive" have
+    their value hidden in the interface after save.
+payload:
+  format: JSON
+  templating: >-
+    The body is a customer-editable template; SysTrack pre-populates a default JSON body template as
+    a starting point.
+  docs: https://documentation.lakesidesoftware.com/docs/sensor-notification-webhook-body-templates
+receiver_guides:
+- name: Microsoft Teams
+  url: https://documentation.lakesidesoftware.com/docs/configure-webhook-reception-in-teams
+- name: ServiceNow
+  url: https://documentation.lakesidesoftware.com/docs/configure-webhook-reception-in-servicenow
+- name: Slack
+  url: https://documentation.lakesidesoftware.com/docs/configure-webhook-reception-in-slack
+- name: PagerDuty
+  url: https://documentation.lakesidesoftware.com/docs/configure-webhook-reception-in-pagerduty

@@ -1,0 +1,57 @@
+generated: '2026-07-19'
+method: searched
+source: Registry and GitHub org searches, 2026-07-19.
+description: >-
+  No first-party Lakeside Software / SysTrack client libraries were found in any public package
+  registry. Lakeside documents API consumption through generic tooling — browser, cURL, Postman and
+  PowerShell — plus a Power BI connector, rather than through published SDKs. Recorded as a verified
+  negative; no SDKs pointer is wired in apis.yml because there is no official client library to
+  point at.
+packages: []
+registries_probed:
+- registry: npm
+  queries: [systrack, lakeside software]
+  result: no first-party packages
+- registry: PyPI
+  queries: [systrack, lakeside-software, pysystrack]
+  result: >-
+    The name "systrack" is taken on PyPI but belongs to Marco Bonelli's Linux kernel syscall
+    implementation tracker — unrelated to Lakeside Software. lakeside-software and pysystrack do not
+    exist.
+- registry: Maven Central
+  result: no first-party packages found
+- registry: NuGet
+  result: no first-party packages found
+- registry: pkg.go.dev
+  result: no first-party packages found
+- registry: RubyGems
+  result: no first-party packages found
+- registry: Packagist
+  result: no first-party packages found
+- registry: crates.io
+  result: no first-party packages found
+github:
+  org_probed: [lakesidesoftware, Lakeside-Software]
+  findings:
+  - org: lakesidesoftware
+    url: https://github.com/lakesidesoftware
+    public_repos: 0
+  - org: Lakeside-Software
+    url: https://github.com/Lakeside-Software
+    public_repos: 1
+    repos: [LoopWorkspace]
+    assessment: >-
+      LoopWorkspace is a Shell repository unrelated to the SysTrack DEX product line; this org is not
+      an authoritative Lakeside Software (SysTrack) engineering presence. No GitHubOrganization
+      pointer is wired in apis.yml on this evidence.
+first_party_tooling:
+  note: >-
+    These are Lakeside-built integration surfaces rather than installable client libraries, so they
+    are not listed as packages.
+  items:
+  - name: SysTrack Power BI Connector
+    kind: BI connector
+    docs: https://documentation.lakesidesoftware.com/docs/systrack-power-bi-connector
+    auth_docs: https://documentation.lakesidesoftware.com/docs/use-the-power-bi-connector-with-api-keys
+documented_client_patterns: [browser, cURL, Postman, PowerShell]
+documented_client_patterns_source: https://documentation.lakesidesoftware.com/docs/systrack-api-1

@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+source: https://trust.lakesidesoftware.com/
+description: >-
+  Lakeside Software operates a public trust center at trust.lakesidesoftware.com listing its
+  security certifications, privacy frameworks and available assurance documentation. Named
+  certifications are published openly; supporting artifacts such as penetration test reports, data
+  processing agreements and cyber insurance documentation are gated behind an access request.
+url: https://trust.lakesidesoftware.com/
+status: 200
+certifications:
+- name: ISO/IEC 27001:2022
+  category: information security management
+  published: true
+- name: SOC 2 Type 2
+  category: service organization control audit
+  published: true
+privacy_frameworks:
+- name: EU-US Data Privacy Framework (DPF)
+- name: Swiss-US Data Privacy Framework (DPF)
+- name: UK Extension to the EU-US Data Privacy Framework
+gated_documents:
+- Penetration testing reports
+- Data processing agreements
+- Cyber insurance documentation
+gated_note: These require an access request through the trust center.
+related_pages:
+- name: Subprocessors
+  url: https://www.lakesidesoftware.com/subprocessors/
+- name: Privacy Statement
+  url: https://www.lakesidesoftware.com/privacy-statement/
+- name: Responsible Use of Artificial Intelligence Statement
+  url: https://www.lakesidesoftware.com/responsible-use-of-artificial-intelligence-statement/
+contact:
+  url: https://www.lakesidesoftware.com/contact-us/
+  note: >-
+    The trust center directs users to the general company contact form. No dedicated security
+    vulnerability disclosure contact or responsible-disclosure policy is published there.
