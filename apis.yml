@@ -1,26 +1,144 @@
 aid: lakeside-software
 name: Lakeside Software
-description: Lakeside Software is a company surfaced as a portfolio company of insight-partners and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Lakeside Software builds SysTrack, a digital employee experience (DEX) platform that instruments
+  Windows, macOS, Linux, Android and virtual endpoints with a local agent to collect high-frequency
+  telemetry on device health, application performance, resource contention and end-user sentiment.
+  SysTrack is delivered as a SaaS cloud tenant and as an on-premises deployment, and exposes
+  programmatic access through the SysTrack API (groups, systems, sensors, automations and an audit
+  trail), a legacy Data API, and an Ingest API for importing external user and device attributes from
+  CSV. The platform ships webhook notifications for sensor, anomaly and data-egress events with
+  HMAC-SHA256 signed-secret verification, a Power BI connector, and SysTrack AI — which exposes a DEX
+  Analytics MCP Server alongside A2A, Microsoft Teams and voice channels for agentic and
+  natural-language access to endpoint analytics. Lakeside Software is a portfolio company of Insight
+  Partners.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.lakesidesoftware.com/wp-content/uploads/2025/09/16x9_Lakeside_Logo_Newsroom.png
 url: https://raw.githubusercontent.com/api-evangelist/lakeside-software/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - insight-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Digital Employee Experience
+- Endpoint Monitoring
+- IT Operations
+- Observability
+- Device Management
+- End User Computing
+- Analytics
+- Virtual Desktop
+- ITSM
+apis:
+- aid: lakeside-software:systrack-api
+  name: SysTrack API
+  description: >-
+    The SysTrack API provides programmatic REST access to SysTrack data on a cloud tenant or
+    on-premises installation — enumerating groups, listing the systems within a group, retrieving
+    sensor data for a system, running and monitoring SysTrack automations, and reading the audit
+    trail through the Audit API. Authentication on cloud tenants uses a SysTrack API key; the
+    reference documentation is published behind customer sign-in. The older Data API is now
+    considered legacy and Lakeside directs integrators to the SysTrack API.
+  humanURL: https://documentation.lakesidesoftware.com/apidocs
+  baseURL: https://cloud.lakesidesoftware.com/api/
+  tags:
+  - Endpoint Monitoring
+  - Sensors
+  - Automation
+  - Audit
+  properties:
+  - type: Documentation
+    url: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+  - type: APIReference
+    url: https://documentation.lakesidesoftware.com/apidocs
+- aid: lakeside-software:systrack-ingest-api
+  name: SysTrack Ingest API
+  description: >-
+    The Ingest API lets SysTrack cloud customers import external user and device attributes from CSV
+    files — department, asset tag, purchase date, employee ID and other business-owned fields — and
+    surface them through the RPT_EnrichedDevices and RPT_EnrichedUsers report views. The feature is
+    API-only with no dedicated UI, and uses a staged workflow: define a JSON schema, upload the CSV,
+    review the reported differences, then explicitly call the process endpoint to start ingestion.
+  humanURL: https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide
+  baseURL: https://cloud.lakesidesoftware.com/api/
+  tags:
+  - Data Ingest
+  - Enrichment
+  - CSV
+  properties:
+  - type: Documentation
+    url: https://documentation.lakesidesoftware.com/docs/ingest-api-user-guide
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/lakeside-software-domain-security.yml
 - type: Website
   url: https://www.lakesidesoftware.com/
+- type: DeveloperPortal
+  url: https://documentation.lakesidesoftware.com/
+- type: Documentation
+  url: https://documentation.lakesidesoftware.com/
+- type: APIReference
+  url: https://documentation.lakesidesoftware.com/apidocs
+- type: GettingStarted
+  url: https://documentation.lakesidesoftware.com/docs/systrack-api-1
+- type: Support
+  url: https://documentation.lakesidesoftware.com/docs/contact-lakeside-support
+- type: Blog
+  url: https://www.lakesidesoftware.com/blog/
+- type: SignUp
+  url: https://www.lakesidesoftware.com/demo/
+- type: TermsOfService
+  url: https://www.lakesidesoftware.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.lakesidesoftware.com/privacy-statement/
+- type: TrustCenter
+  url: security/lakeside-software-trust-center.yml
+- type: Compliance
+  url: conformance/lakeside-software-conformance.yml
+- type: Conformance
+  url: conformance/lakeside-software-conformance.yml
+- type: MCPServer
+  url: mcp/lakeside-software-mcp.yml
+- type: Webhooks
+  url: asyncapi/lakeside-software-webhooks.yml
+- type: Authentication
+  url: authentication/lakeside-software-authentication.yml
+- type: Conventions
+  url: conventions/lakeside-software-conventions.yml
+- type: Lifecycle
+  url: lifecycle/lakeside-software-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/lakeside-software-lifecycle.yml
+- type: ChangeLog
+  url: changelog/lakeside-software-changelog.yml
+- type: LLMsTxt
+  url: llms/lakeside-software-llms.txt
+- type: Packages
+  url: packages/lakeside-software-packages.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
