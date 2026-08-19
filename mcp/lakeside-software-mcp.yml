@@ -1,59 +1,60 @@
 generated: '2026-07-19'
 method: searched
-source: >-
-  https://documentation.lakesidesoftware.com/docs/systrack-api-1 (course outline names the
-  "SysTrack DEX Analytics MCP Server"),
-  https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack (May 2026 entry:
-  "11.7.1.29 Hotfix Release Notes: OAuth 2.0 Authentication with Microsoft Entra ID for the
-  SysTrack AI MCP Server"),
-  https://documentation.lakesidesoftware.com/docs/systrack-ai-overview (MCP is a first-class
-  SysTrack AI interaction channel alongside A2A, Teams, Voice and Pulse).
+source: 'https://documentation.lakesidesoftware.com/docs/systrack-api-1 (course outline names the "SysTrack
+  DEX Analytics MCP Server"), https://documentation.lakesidesoftware.com/docs/whats-new-in-systrack (May
+  2026 entry: "11.7.1.29 Hotfix Release Notes: OAuth 2.0 Authentication with Microsoft Entra ID for the
+  SysTrack AI MCP Server"), https://documentation.lakesidesoftware.com/docs/systrack-ai-overview (MCP
+  is a first-class SysTrack AI interaction channel alongside A2A, Teams, Voice and Pulse).'
 status: published
-description: >-
-  Lakeside publishes an MCP server as part of the SysTrack AI add-on package — referred to in the
-  documentation as the SysTrack DEX Analytics MCP Server and the SysTrack AI MCP Server. It exposes
-  SysTrack endpoint analytics to MCP clients (Microsoft Copilot Studio is the integration called out
-  in the documentation portal) and, as of the 11.8 release, can initiate approved Self-Help
-  automations from the MCP channel. SysTrack AI reports per-channel usage with MCP broken out as its
-  own channel in the AI Overview dashboard.
+description: Lakeside publishes an MCP server as part of the SysTrack AI add-on package — referred to
+  in the documentation as the SysTrack DEX Analytics MCP Server and the SysTrack AI MCP Server. It exposes
+  SysTrack endpoint analytics to MCP clients (Microsoft Copilot Studio is the integration called out in
+  the documentation portal) and, as of the 11.8 release, can initiate approved Self-Help automations from
+  the MCP channel. SysTrack AI reports per-channel usage with MCP broken out as its own channel in the
+  AI Overview dashboard.
 server:
   name: SysTrack DEX Analytics MCP Server
   transport: http
   url: null
-  url_note: >-
-    The endpoint is tenant-scoped and published inside the customer-authenticated documentation
-    (documentation.lakesidesoftware.com/apidocs requires sign-in). No public hostname is advertised,
-    so none is recorded here.
+  url_note: The endpoint is tenant-scoped and published inside the customer-authenticated documentation
+    (documentation.lakesidesoftware.com/apidocs requires sign-in). No public hostname is advertised, so
+    none is recorded here.
 authentication:
   methods:
   - name: OAuth 2.0 with Microsoft Entra ID
     since: 11.7.1.29 (May 2026)
     source: https://documentation.lakesidesoftware.com/docs/11-7-0-xxx-hotfix-release-notes
   - name: SysTrack AI (Partner) key
-    note: >-
-      The "Programmatic Access to SysTrack" course lists the SysTrack AI package and a SysTrack AI
-      (Partner) key as required access to use SysTrack AI programmatic access and the DEX Analytics
-      MCP Server.
+    note: The "Programmatic Access to SysTrack" course lists the SysTrack AI package and a SysTrack AI
+      (Partner) key as required access to use SysTrack AI programmatic access and the DEX Analytics MCP
+      Server.
     source: https://documentation.lakesidesoftware.com/docs/systrack-api-1
 entitlement:
   requires_addon: SysTrack AI add-on package
   note: The MCP server is not part of the base SysTrack entitlement.
 channels:
-  note: >-
-    SysTrack AI exposes the same analytics across several channels; MCP is one of them. Recorded
-    verbatim from the SysTrack AI Overview documentation.
-  values: [A2A, MCP, Teams, Voice, Pulse]
+  note: SysTrack AI exposes the same analytics across several channels; MCP is one of them. Recorded verbatim
+    from the SysTrack AI Overview documentation.
+  values:
+  - A2A
+  - MCP
+  - Teams
+  - Voice
+  - Pulse
 capabilities:
 - name: DEX analytics access
   description: Natural-language and agentic access to SysTrack endpoint/digital-experience analytics.
   source: https://documentation.lakesidesoftware.com/docs/systrack-ai-overview
 - name: Self-Help automation execution
-  description: >-
-    As of 11.8, SysTrack AI can initiate approved Self-Help automations from end-user channels
-    including MCP. Only automations approved in the Self-Help catalog are eligible, and execution
-    activity is logged for auditing.
+  description: As of 11.8, SysTrack AI can initiate approved Self-Help automations from end-user channels
+    including MCP. Only automations approved in the Self-Help catalog are eligible, and execution activity
+    is logged for auditing.
   source: https://documentation.lakesidesoftware.com/docs/11-8-agent-release-notes
 tools: []
-tools_note: >-
-  No public tool manifest is published — the MCP reference lives behind customer sign-in and Lakeside
-  publishes no public OpenAPI to derive a candidate tool list from. Left empty rather than fabricated.
+tools_note: No public tool manifest is published — the MCP reference lives behind customer sign-in and
+  Lakeside publishes no public OpenAPI to derive a candidate tool list from. Left empty rather than fabricated.
+deployment:
+  mode: remote
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
