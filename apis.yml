@@ -12,6 +12,17 @@ description: >-
   Analytics MCP Server alongside A2A, Microsoft Teams and voice channels for agentic and
   natural-language access to endpoint analytics. Lakeside Software is a portfolio company of Insight
   Partners.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
