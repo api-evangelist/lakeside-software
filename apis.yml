@@ -91,6 +91,10 @@ apis:
   baseURL: https://cloud.lakesidesoftware.com/api/
   tags:
   - Data Ingest
+  - Data Enrichment
+  - CSV
+  tags_raw:
+  - Data Ingest
   - Enrichment
   - CSV
   properties:
