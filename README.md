@@ -64,6 +64,108 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lakeside Software is a company surfaced as a portfolio company of insight-partners and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Lakeside Software builds SysTrack, a digital employee experience (DEX) platform that instruments Windows, macOS, Linux, Android and virtual endpoints with a local agent to collect high-frequency telemetry on device health, application performance, resource contention and end-user sentiment. SysTrack is delivered as a SaaS cloud tenant and as an on-premises deployment, and exposes programmatic access through the SysTrack API (groups, systems, sensors, automations and an audit trail), a legacy Data API, and an Ingest API for importing external user and device attributes from CSV. The platform ships webhook notifications for sensor, anomaly and data-egress events with HMAC-SHA256 signed-secret verification, a Power BI connector, and SysTrack AI — which exposes a DEX Analytics MCP Server alongside A2A, Microsoft Teams and voice channels for agentic and natural-language access to endpoint analytics. Lakeside Software is a portfolio company of Insight Partners.
 
-Backed by: insight-partners — https://www.lakesidesoftware.com/
+**Areas:** Company · Digital Employee Experience · Endpoint Monitoring · IT Operations · Observability · Device Management · End User Computing · Analytics · Virtual Desktop · ITSM
+
+## Lakeside Software on APIs.io
+
+Everything profiled for Lakeside Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lakeside-software/](https://apis.io/providers/lakeside-software/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [SysTrack API](https://apis.io/apis/lakeside-software/systrack-api/) — The SysTrack API provides programmatic REST access to SysTrack data on a cloud tenant or on-premises installation — enumerating groups, listing the systems…
+- [SysTrack Ingest API](https://apis.io/apis/lakeside-software/systrack-ingest-api/) — The Ingest API lets SysTrack cloud customers import external user and device attributes from CSV files — department, asset tag, purchase date, employee ID…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Lakeside Software Webhooks](https://apis.io/asyncapis/lakeside-software/lakeside-software-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [SysTrack DEX Analytics MCP Server](https://apis.io/servers/lakeside-software/systrack-dex-analytics-mcp-server/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Lakeside Software Authentication](https://apis.io/security/lakeside-software/lakeside-software-authentication/)
+- [Lakeside Software Domain Security](https://apis.io/security/lakeside-software/lakeside-software-domain-security/)
+- [Lakeside Software Trust Center](https://apis.io/security/lakeside-software/lakeside-software-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.lakesidesoftware.com/)
+- [Documentation](https://documentation.lakesidesoftware.com/)
+- [Getting started](https://documentation.lakesidesoftware.com/docs/systrack-api-1)
+- [API reference](https://documentation.lakesidesoftware.com/apidocs)
+- [Sign up](https://www.lakesidesoftware.com/demo/)
+- [Support](https://documentation.lakesidesoftware.com/docs/contact-lakeside-support)
+- [Blog](https://www.lakesidesoftware.com/blog/)
+- [Terms of service](https://www.lakesidesoftware.com/terms-and-conditions/)
+- [Privacy policy](https://www.lakesidesoftware.com/privacy-statement/)
+
+## API Evangelist rating
+
+**Kin Score 46.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 57.1 |
+| Access clarity | 50.0 |
+
+**Agent readiness 23.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lakeside-software/](https://apis.io/providers/lakeside-software/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lakeside Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lakeside-software/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
